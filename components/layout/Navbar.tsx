@@ -132,6 +132,7 @@ export default function Navbar() {
   const { user, role, signOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const [mobileSection, setMobileSection] = useState<string | null>(null); // ← FIXED
   const profileRef = useRef<HTMLDivElement>(null);
 
   const toggleMobile = (section: string) =>
@@ -244,7 +245,6 @@ export default function Navbar() {
                 href="/#poll"
                 className="flex items-center gap-1.5 text-sm font-bold bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full hover:bg-blue-100 transition-colors"
                 onClick={() => {
-                  // If on home page, scroll to poll
                   if (window.location.pathname === '/') {
                     document.getElementById('poll')?.scrollIntoView({ behavior: 'smooth' });
                   }
